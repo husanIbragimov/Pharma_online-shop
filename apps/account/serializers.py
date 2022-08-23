@@ -13,14 +13,21 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Account
-        fields = ('id', 'first_name', 'last_name', 'email', 'password', 'password2')
+        fields = ('id',
+                  'first_name',
+                  'last_name',
+                  'email',
+                  'password',
+                  'password2'
+                  )
 
     def validate(self, attrs):
         password = attrs.get('password')
         password2 = attrs.get('password2')
 
         if password != password2:
-            raise serializers.ValidationError({'success': True, 'message': 'Password did not match, please try again'})
+            raise serializers.ValidationError({'success': True,
+                                               'message': 'Password did not match, please try again'})
         return attrs
 
     def create(self, validated_data):
@@ -47,15 +54,17 @@ class LoginSerializer(serializers.ModelSerializer):
         user = authenticate(email=email, password=password)
         if not user:
             raise AuthenticationFailed({
-                'message': 'Invalid email or password'
+                'message': 'Email or password is not correct'
             })
         if not user.is_active:
-            raise AuthenticationFailed({'message': 'Account disabled'})
+            raise AuthenticationFailed({
+                'message': 'Account disabled'
+            })
 
         data = {
             'success': True,
             'email': user.email,
-            'token': user.token,
+            'tokens': user.token
         }
         return data
 

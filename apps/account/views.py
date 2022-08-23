@@ -80,7 +80,7 @@ class LoginAPIView(generics.GenericAPIView):
     serializer_class = LoginSerializer
 
     def post(self, request):
-        serializer = self.serializer_class(data=request.data, partial=True)
+        serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             return Response({'success': True, 'data': serializer.data}, status=status.HTTP_200_OK)
         return Response({'success': False, 'message': 'Credentials is not valid'}, status=status.HTTP_400_BAD_REQUEST)
