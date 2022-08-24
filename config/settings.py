@@ -9,8 +9,13 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+import os.path
 from datetime import timedelta
 from pathlib import Path
+import django_heroku
+
+# Activate Django-heroku.
+django_heroku.settings(locals())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +29,7 @@ SECRET_KEY = 'django-insecure-pylw3j93+p^$%)!9t7+sn&)9e4*@5-w@wrweo4f_+6$$crcyzm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -41,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework',
     'drf_yasg',
+    'corsheaders',
 
     # local apps
     'apps.account',
@@ -58,7 +64,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+# cors headers
+CORS_ALLOW_All_ORIGINS = True
+CORS_ALLOW_METHODS = [
+    '*'
+]
+CORS_ALLOW_HEADERS = [
+    '*'
+]
+CORS_ALLOW_CREDENTIALS = True
 
 AUTH_USER_MODEL = 'account.Account'
 
@@ -66,8 +83,6 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 ROOT_URLCONF = 'config.urls'
-
-
 
 TEMPLATES = [
     {
@@ -133,6 +148,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -147,7 +164,6 @@ AUTHENTICATION_BACKENDS = [
     # 'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
@@ -156,7 +172,6 @@ EMAIL_PORT = 587
 # EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_HOST_USER = 'ibragmovhusan283@gmail.com'
 EMAIL_HOST_PASSWORD = 'shcxzsroctsmohqu'
-
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -167,7 +182,6 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'Bearer': {
@@ -177,7 +191,6 @@ SWAGGER_SETTINGS = {
         }
     }
 }
-
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
