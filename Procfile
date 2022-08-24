@@ -1,0 +1,1 @@
+web: gunicorn Pharma_online-shop-main.wsgi
