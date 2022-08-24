@@ -1,8 +1,9 @@
 from django.contrib import admin
 from .models import *
+from modeltranslation.admin import TranslationAdmin
 
 
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslationAdmin):
     list_display = ('id', 'name',)
 
 
@@ -16,11 +17,11 @@ class AttributeDetailInline(admin.StackedInline):
     extra = 1
 
 
-class AttributeAdmin(admin.ModelAdmin):
+class AttributeAdmin(TranslationAdmin):
     inlines = [AttributeDetailInline]
 
 
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(TranslationAdmin):
     inlines = [ProductImageInline, AttributeDetailInline]
     list_display = ['name', 'id', 'status', 'brand']
     prepopulated_fields = {"slug": ("name",)}
