@@ -71,7 +71,10 @@ MIDDLEWARE = [
 ]
 
 # cors headers
-CORS_ALLOW_All_ORIGINS = True
+CORS_ALLOW_All_ORIGINS = [
+    "http://127.0.0.1:5540",
+    "http://localhost:3001",
+]
 CORS_ALLOW_METHODS = [
     '*'
 ]
@@ -169,6 +172,18 @@ MODELTRANSLATION_TRANSLATION_FILES = (
     'apps.contact.translator',
     'apps.product.translator',
 )
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en',}, # English
+        {'code': 'ru',}, # Russian
+        {'code': 'uz',}, # Uzbek
+    ),
+    'default': {
+        'fallbacks': ['en'],
+        'hide_untranslated': False,
+    }
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
