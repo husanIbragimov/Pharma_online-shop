@@ -59,6 +59,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -67,7 +68,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 # cors headers
@@ -175,9 +175,9 @@ MODELTRANSLATION_TRANSLATION_FILES = (
 
 PARLER_LANGUAGES = {
     None: (
-        {'code': 'en',}, # English
-        {'code': 'ru',}, # Russian
-        {'code': 'uz',}, # Uzbek
+        {'code': 'en', },  # English
+        {'code': 'ru', },  # Russian
+        {'code': 'uz', },  # Uzbek
     ),
     'default': {
         'fallbacks': ['en'],
@@ -215,7 +215,7 @@ EMAIL_PORT = 587
 # EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 # EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_HOST_USER = 'ibragmovhusan283@gmail.com'
-EMAIL_HOST_PASSWORD = 'shcxzsroctsmohqu'
+EMAIL_HOST_PASSWORD = 'xdsepcxursdkfbjx'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [

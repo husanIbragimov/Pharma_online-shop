@@ -35,13 +35,13 @@ class AccountRegisterAPIView(generics.GenericAPIView):
         token = RefreshToken.for_user(user)
 
         # activate account with email
-        current_site = 'localhost:8000/'
+        current_site = 'xusan.pythonanywhere.com/'
         relative_link = 'account/verify-email/'
         abs_url = f'http://{current_site}{relative_link}?token={str(token.access_token)}'
         email_body = f'Hi, {user.email} \n User link below to activate your email \n {abs_url}'
         data = {
             'to_email': user.email,
-            'email_subject': 'Activate email to CRM Isystem',
+            'email_subject': 'Activate email to Pharma',
             'email_body': email_body
         }
         Util.send_email(data)
