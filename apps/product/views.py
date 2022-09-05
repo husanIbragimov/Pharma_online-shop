@@ -7,97 +7,97 @@ from .serializers import *
 from ..account.permissions import IsAdminUserForAccount
 
 
-class TypeCategoryCreateAPIView(generics.CreateAPIView):
-    queryset = TypeCategory.objects.all()
-    serializer_class = TypeCategorySerializer
-    permission_classes = [IsAdminUserForAccount]
-
-
-class TypeCategoryListAPIView(generics.ListAPIView):
-    queryset = TypeCategory.objects.all()
-    serializer_class = TypeCategorySerializer
-
-
-class TypeCategoryRetrieveAPIView(generics.RetrieveAPIView):
-    queryset = TypeCategory.objects.all()
-    serializer_class = TypeCategorySerializer
-    lookup_field = 'pk'
-
-
-class TypeCategoryUpdateAPIView(generics.UpdateAPIView):
-    queryset = TypeCategory.objects.all()
-    serializer_class = TypeCategorySerializer
-    permission_classes = [IsAdminUserForAccount]
-    lookup_field = 'pk'
-
-
-class TypeCategoryDestroyAPIView(generics.DestroyAPIView):
-    queryset = TypeCategory.objects.all()
-    serializer_class = TypeCategorySerializer
-    permission_classes = [IsAdminUserForAccount]
-    lookup_field = 'pk'
-
-
-class SubCategoryCreateAPIView(generics.CreateAPIView):
-    queryset = SubCategory.objects.all()
-    serializer_class = SubCategorySerializer
-    permission_classes = [IsAdminUserForAccount]
-
-
-class SubCategoryListAPIView(generics.ListAPIView):
-    queryset = SubCategory.objects.all()
-    serializer_class = SubCategorySerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-
-class SubCategoryRetrieveAPIView(generics.RetrieveAPIView):
-    queryset = SubCategory.objects.all()
-    serializer_class = SubCategorySerializer
-    permission_classes = [IsAdminUserForAccount]
-    lookup_field = 'pk'
-
-
-class SubCategoryUpdateAPIView(generics.UpdateAPIView):
-    queryset = SubCategory.objects.all()
-    serializer_class = SubCategorySerializer
-    permission_classes = [IsAdminUserForAccount]
-    lookup_field = 'pk'
-
-
-class SubCategoryDestroyAPIView(generics.DestroyAPIView):
-    queryset = SubCategory.objects.all()
-    serializer_class = SubCategorySerializer
-    permission_classes = [IsAdminUserForAccount]
-    lookup_field = 'pk'
+# class TypeCategoryCreateAPIView(generics.CreateAPIView):
+#     queryset = TypeCategory.objects.all()
+#     serializer_class = TypeCategorySerializer
+#     permission_classes = [IsAdminUserForAccount]
+#
+#
+# class TypeCategoryListAPIView(generics.ListAPIView):
+#     queryset = TypeCategory.objects.all()
+#     serializer_class = TypeCategorySerializer
+#
+#
+# class TypeCategoryRetrieveAPIView(generics.RetrieveAPIView):
+#     queryset = TypeCategory.objects.all()
+#     serializer_class = TypeCategorySerializer
+#     lookup_field = 'pk'
+#
+#
+# class TypeCategoryUpdateAPIView(generics.UpdateAPIView):
+#     queryset = TypeCategory.objects.all()
+#     serializer_class = TypeCategorySerializer
+#     permission_classes = [IsAdminUserForAccount]
+#     lookup_field = 'pk'
+#
+#
+# class TypeCategoryDestroyAPIView(generics.DestroyAPIView):
+#     queryset = TypeCategory.objects.all()
+#     serializer_class = TypeCategorySerializer
+#     permission_classes = [IsAdminUserForAccount]
+#     lookup_field = 'pk'
+#
+#
+# class SubCategoryCreateAPIView(generics.CreateAPIView):
+#     queryset = SubCategory.objects.all()
+#     serializer_class = SubCategorySerializer
+#     permission_classes = [IsAdminUserForAccount]
+#
+#
+# class SubCategoryListAPIView(generics.ListAPIView):
+#     queryset = SubCategory.objects.all()
+#     serializer_class = SubCategorySerializer
+#     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+#
+#
+# class SubCategoryRetrieveAPIView(generics.RetrieveAPIView):
+#     queryset = SubCategory.objects.all()
+#     serializer_class = SubCategorySerializer
+#     permission_classes = [IsAdminUserForAccount]
+#     lookup_field = 'pk'
+#
+#
+# class SubCategoryUpdateAPIView(generics.UpdateAPIView):
+#     queryset = SubCategory.objects.all()
+#     serializer_class = SubCategorySerializer
+#     permission_classes = [IsAdminUserForAccount]
+#     lookup_field = 'pk'
+#
+#
+# class SubCategoryDestroyAPIView(generics.DestroyAPIView):
+#     queryset = SubCategory.objects.all()
+#     serializer_class = SubCategorySerializer
+#     permission_classes = [IsAdminUserForAccount]
+#     lookup_field = 'pk'
 
 
 class CategoryCreateAPIView(generics.CreateAPIView):
     queryset = Category.objects.all()
-    serializer_class = SubCategorySerializer
+    serializer_class = CategorySerializer
     permission_classes = [IsAdminUserForAccount]
 
 
 class CategoryListAPIView(generics.ListAPIView):
-    queryset = Category.objects.all()
-    serializer_class = SubCategorySerializer
+    queryset = Category.objects.filter(is_active=True, parent_category__isnull=True).order_by('name')
+    serializer_class = CategorySerializer
 
 
 class CategoryRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Category.objects.all()
-    serializer_class = SubCategorySerializer
+    serializer_class = CategorySerializer
     lookup_field = 'pk'
 
 
 class CategoryUpdateAPIView(generics.UpdateAPIView):
     queryset = Category.objects.all()
-    serializer_class = SubCategorySerializer
+    serializer_class = CategorySerializer
     permission_classes = [IsAdminUserForAccount]
     lookup_field = 'pk'
 
 
 class CategoryDestroyAPIView(generics.DestroyAPIView):
     queryset = Category.objects.all()
-    serializer_class = SubCategorySerializer
+    serializer_class = CategorySerializer
     permission_classes = [IsAdminUserForAccount]
     lookup_field = 'pk'
 
@@ -152,7 +152,8 @@ class ProductListAPIView(generics.ListAPIView):
             queryset_list = queryset_list.filter(
                 Q(title_icontains=query) |
                 Q(status=query) |
-                Q(category__name=query)
+                Q(category_shop__name__iexact=query) |
+                Q(category_shop__name__icontains=query)
             )
         return queryset_list
 

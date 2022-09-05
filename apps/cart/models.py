@@ -2,7 +2,7 @@ import uuid
 
 from django.conf import settings
 from django.db import models
-from ..product.models import Timestemp, Product, AttributeDetail
+from ..product.models import Timestemp, Product
 from ..account.models import Account
 
 
@@ -36,7 +36,7 @@ class Cart(Timestemp):
 
 class CartItem(Timestemp):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='cart_items')
-    product_detail = models.ForeignKey(AttributeDetail, on_delete=models.CASCADE)
+    product_detail = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
     quantity = models.IntegerField(default=1, null=True)
 
     @property

@@ -4,19 +4,19 @@ from .views import *
 app_name = 'product'
 
 urlpatterns = [
-    # type_category -->
-    path('1create-type-category/', TypeCategoryCreateAPIView.as_view()),
-    path('1list-type-category/', TypeCategoryListAPIView.as_view()),
-    path('1type-category/<int:pk>/', TypeCategoryRetrieveAPIView.as_view()),
-    path('1type-category/update/<int:pk>/', TypeCategoryUpdateAPIView.as_view()),
-    path('1type-category/destroy/<int:pk>/', TypeCategoryDestroyAPIView.as_view()),
+    # # type_category -->
+    # path('1create-type-category/', TypeCategoryCreateAPIView.as_view()),
+    # path('1list-type-category/', TypeCategoryListAPIView.as_view()),
+    # path('1type-category/<int:pk>/', TypeCategoryRetrieveAPIView.as_view()),
+    # path('1type-category/update/<int:pk>/', TypeCategoryUpdateAPIView.as_view()),
+    # path('1type-category/destroy/<int:pk>/', TypeCategoryDestroyAPIView.as_view()),
 
-    # sub_category -->
-    path('2create-sub-category/', SubCategoryCreateAPIView.as_view()),
-    path('2list-sub-category/', SubCategoryListAPIView.as_view()),
-    path('2sub-category/<int:pk>/', SubCategoryRetrieveAPIView.as_view()),
-    path('2sub-category/update/<int:pk>/', SubCategoryUpdateAPIView.as_view()),
-    path('2sub-category/delete/<int:pk>/', SubCategoryDestroyAPIView.as_view()),
+    # # sub_category -->
+    # path('2create-sub-category/', SubCategoryCreateAPIView.as_view()),
+    # path('2list-sub-category/', SubCategoryListAPIView.as_view()),
+    # path('2sub-category/<int:pk>/', SubCategoryRetrieveAPIView.as_view()),
+    # path('2sub-category/update/<int:pk>/', SubCategoryUpdateAPIView.as_view()),
+    # path('2sub-category/delete/<int:pk>/', SubCategoryDestroyAPIView.as_view()),
 
     # category -->
     path('3category/create/', CategoryCreateAPIView.as_view()),

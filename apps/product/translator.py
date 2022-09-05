@@ -11,19 +11,19 @@ class SubCategoryTranslationOptions(TranslationOptions):
 
 
 class CategoryTranslationOptions(TranslationOptions):
-    fields = ('name',)
+    pass
 
 
 class ProductTranslationOptions(TranslationOptions):
     fields = ('name', 'slug',)
 
 
-class AttributeDetailTranslationOptions(TranslationOptions):
-    fields = ('made_in', 'release_form', 'consists', 'capacity', 'guarantee')
+# class AttributeDetailTranslationOptions(TranslationOptions):
+#     fields = ('made_in', 'release_form', 'consists', 'capacity', 'guarantee')
 
 
-translator.register(AttributeDetail, AttributeDetailTranslationOptions)
-translator.register(TypeCategory, TypeCategoryTranslationOptions)
-translator.register(SubCategory, SubCategoryTranslationOptions)
-translator.register(Category, CategoryTranslationOptions)
+# translator.register(AttributeDetail, AttributeDetailTranslationOptions)
+# translator.register(TypeCategory, TypeCategoryTranslationOptions)
+# translator.register(SubCategory, SubCategoryTranslationOptions)
+# translator.register(Category, CategoryTranslationOptions)
 translator.register(Product, ProductTranslationOptions)

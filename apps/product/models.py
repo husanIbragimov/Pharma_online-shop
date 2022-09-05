@@ -14,24 +14,21 @@ class Timestemp(models.Model):
         abstract = True
 
 
-class TypeCategory(models.Model):
-    name = models.CharField(max_length=40)
+class Category(Timestemp):
+    FONT_TYPE = (
+        (0, 'text'),
+        (1, 'parent node'),
 
-    def __str__(self):
-        return self.name
+    )
+    name = models.CharField(max_length=100)
+    parent_category = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True,
+                                        limit_choices_to={'font_type': 1})
+    font_type = models.IntegerField(choices=FONT_TYPE, default=1)
+    is_active = models.BooleanField(default=True)
 
-
-class SubCategory(models.Model):
-    type_category = models.ForeignKey(TypeCategory, on_delete=models.SET_NULL, null=True, related_name='type_category')
-    name = models.CharField(max_length=40)
-
-    def __str__(self):
-        return self.name
-
-
-class Category(models.Model):
-    sub_category = models.ForeignKey(SubCategory, on_delete=models.SET_NULL, null=True, related_name='sub_category')
-    name = models.CharField(max_length=40)
+    @property
+    def normalize_title(self):
+        return self.name.replace(' ', '').lower()
 
     def __str__(self):
         return self.name
@@ -56,6 +53,13 @@ class Category_status(Timestemp):
         return self.name
 
 
+class NewValue(models.Model):
+    new_price = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.new_price
+
+
 class Product(Timestemp):
     STATUS = (
         (0, 'NEW'),
@@ -67,26 +71,8 @@ class Product(Timestemp):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, null=True, blank=True)
     # description = RichTextField()
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
-    brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, null=True)
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse("article_detail", kwargs={"slug": self.slug})
-
-
-class NewValue(models.Model):
-    new_price = models.CharField(max_length=20)
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, blank=True)
-
-    def __str__(self):
-        return self.product.name
-
-
-class AttributeDetail(Timestemp):
-    attribute = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, related_name='attribute_detail')
+    category = models.ManyToManyField(Category, limit_choices_to={'font_type__lt': 1}, blank=True)
+    brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, null=True, blank=True)
     key = models.IntegerField()
     value = models.CharField(max_length=221)
     new_price = models.ForeignKey(NewValue, on_delete=models.SET_NULL, null=True, blank=True)
@@ -97,7 +83,10 @@ class AttributeDetail(Timestemp):
     guarantee = models.CharField(max_length=30)  # muddat
 
     def __str__(self):
-        return self.attribute.name
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("article_detail", kwargs={"slug": self.slug})
 
 
 class ProductImage(Timestemp):

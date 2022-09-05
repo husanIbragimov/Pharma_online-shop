@@ -3,8 +3,8 @@ from .models import *
 from modeltranslation.admin import TranslationAdmin
 
 
-class CategoryAdmin(TranslationAdmin):
-    list_display = ('id', 'name',)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'parent_category', 'font_type', 'is_active')
 
 
 class ProductImageInline(admin.TabularInline):
@@ -12,27 +12,27 @@ class ProductImageInline(admin.TabularInline):
     extra = 1
 
 
-class AttributeDetailInline(admin.StackedInline):
-    model = AttributeDetail
-    extra = 1
-
-
-class AttributeAdmin(TranslationAdmin):
-    inlines = [AttributeDetailInline]
+# class AttributeDetailInline(admin.StackedInline):
+#     model = AttributeDetail
+#     extra = 1
+#
+#
+# class AttributeAdmin(TranslationAdmin):
+#     inlines = [AttributeDetailInline]
 
 
 class ProductAdmin(TranslationAdmin):
-    inlines = [ProductImageInline, AttributeDetailInline]
-    list_display = ['name', 'id', 'status', 'brand']
+    inlines = [ProductImageInline]
+    list_display = ['name', 'id', 'status', 'brand', 'key']
     prepopulated_fields = {"slug": ("name",)}
     search_fields = ['name', 'description']
+    filter_horizontal = ('category',)
 
 
 admin.site.register(Brand)
 admin.site.register(NewValue)
-admin.site.register(TypeCategory)
-admin.site.register(SubCategory)
-admin.site.register(AttributeDetail)
+# admin.site.register(TypeCategory)
+# admin.site.register(SubCategory)
 admin.site.register(Category_status)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
