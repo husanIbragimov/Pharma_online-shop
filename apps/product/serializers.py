@@ -65,13 +65,18 @@ class ProductImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductImage
         fields = ['id',
-                  'product',
-                  'image'
+                  'get_image_url'
                   ]
 
 
 class ProductSerializer(serializers.ModelSerializer):
     product_images = ProductImageSerializer(many=True)
+    category = CategorySerializer(many=True, read_only=True)
+
+    # def get_images(self, obj):
+    #     qs = ProductImage.objects.filter(is_active=True, product=obj)
+    #     sz = ProductImageSerializer(instance=qs, many=True)
+    #     return sz.data
 
     class Meta:
         model = Product

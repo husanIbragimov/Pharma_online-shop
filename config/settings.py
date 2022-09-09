@@ -27,6 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-pylw3j93+p^$%)!9t7+sn&)9e4*@5-w@wrweo4f_+6$$crcyzm'
 
+STRIPE_SECRET_KEY = 'pk_test_51LfgPFKFGJ64tNUzzfHpaAGH0HKoPxzNFAB00mXNEITldtmTilcZAPEqPvj0h8lVYOLYByXCwhZPJlfBwWbn6mmA00KuccuP6t'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -45,10 +47,11 @@ INSTALLED_APPS = [
 
     # build app
     'ckeditor',
-    'rest_framework_simplejwt',
-    'rest_framework',
     'drf_yasg',
     'corsheaders',
+    'rest_framework',
+    'rest_framework_simplejwt',
+    # 'rest_framework_simplejwt.token_blacklist',
 
     # local apps
     'apps.account',
@@ -56,7 +59,27 @@ INSTALLED_APPS = [
     'apps.cart',
     'apps.contact',
     'apps.product',
+
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': (
+        # 'rest_framework.permissions.IsAdminUser',
+        # 'rest_framework.permissions.IsAuthenticated',
+
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
+LOCAL_BASE_URL = 'http://127.0.0.1:8000'
+PROD_BASE_URL = 'https://xusan.pythonanywhere.com/'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -217,16 +240,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'ibragmovhusan283@gmail.com'
 EMAIL_HOST_PASSWORD = 'zonjqsrbpoctogcy'
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
-}
-
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'Bearer': {
@@ -238,8 +251,8 @@ SWAGGER_SETTINGS = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=2),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=7),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=10),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
     'UPDATE_LAST_LOGIN': False,
@@ -265,6 +278,6 @@ SIMPLE_JWT = {
     'JTI_CLAIM': 'jti',
 
     'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
-    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
-    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+    'SLIDING_TOKEN_LIFETIME': timedelta(days=5),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=7),
 }

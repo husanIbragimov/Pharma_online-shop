@@ -16,6 +16,7 @@ class GetInTouch(models.Model):
 
 class Subscribe(models.Model):
     email = models.EmailField()
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.email

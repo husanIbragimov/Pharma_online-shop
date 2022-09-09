@@ -6,10 +6,9 @@ from .serializers import GetInTouchSerializer, SubscribeSerializer
 class GetInTouchCreateAPIView(generics.CreateAPIView):
     queryset = GetInTouch.objects.all()
     serializer_class = GetInTouchSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-#
-# class SubscribeCreateAPIView(generics.CreateAPIView):
-#     queryset = Subscribe.objects.all()
-#     serializer_class = SubscribeSerializer
+
+class SubscribeCreateAPIView(generics.CreateAPIView):
+    queryset = Subscribe.objects.filter(is_active=True).order_by('-id')
+    serializer_class = SubscribeSerializer
 

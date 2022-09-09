@@ -1,11 +1,12 @@
-from .models import WishList, Cart, CartItem, Order
-from .serializers import WishListSerializer, WishListCreateSerializer, CartSerializer, CartItemSerializer, \
+from rest_framework.generics import get_object_or_404
+
+from .serializers import WishListSerializer, WishListCreateSerializer, CartItemSerializer, \
     OrderSerializer
 from rest_framework import generics, status, permissions, views
 from rest_framework.response import Response
 from django.http import JsonResponse
-
-from ..product.models import Product
+from .models import *
+from apps.product.models import Product
 
 
 class WishListListCreateAPIView(generics.ListCreateAPIView):
@@ -30,42 +31,27 @@ class WishListListCreateAPIView(generics.ListCreateAPIView):
         serializer.save(user_id=user_id)
 
 
-class AddToCartCreateAPIView(views.APIView):
+class AddToCartItemCreateAPIView(generics.CreateAPIView):
     queryset = Cart.objects.all()
-    serializer_class = None
-
-    def post(self, request, *args, **kwargs):
-        pid = request.data.get('_pid')
-        user = request.user
-        product = Product.objects.filter(id=pid).first()
-        my_cart, new_cart = Cart.objects.get_or_create(client=user, is_ordered=False)
-        data = None
-        if my_cart:
-            CartItem.objects.create(product=product, cart=my_cart)
-            data = {
-                'success': True,
-                'product': product.name,
-            }
-        if new_cart:
-            CartItem.objects.create(product=product, cart=new_cart)
-            data = {
-                'success': True,
-                'product': product.name
-            }
-
-        return JsonResponse(data, status=201)
+    serializer_class = CartItemSerializer
 
 
-class MyCartListAPIView(generics.ListAPIView):
-    queryset = Cart.objects.all()
-    serializer_class = CartSerializer
+# class MyCartListAPIView(generics.ListAPIView):
+#     queryset = Cart.objects.all()
+#     serializer_class = CartSerializer
+#
+#     def get_queryset(self):
+#         qs = super().get_queryset().filter(client=self.request.user, is_ordered=False)
+#         return qs
 
-    def get_queryset(self):
-        qs = super().get_queryset().filter(client=self.request.user, is_ordered=False)
-        return qs
+
+class DeleteFromMyCart(generics.DestroyAPIView):
+    queryset = CartItem.objects.all()
+    serializer_class = CartItemSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
-class DeleteFromMyCart(generics.RetrieveDestroyAPIView):
+class RetrieveMyCart(generics.RetrieveAPIView):
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -77,30 +63,34 @@ class OrderAPIView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        cart_id = request.data.get('cart_id')
-        cart = Cart.objects.filter(id=cart_id).first()
+        data = request.data
+        data['client'] = request.user.id
+        print(request.user.id)
+        print(data)
+        serializer = self.serializer_class(data=data)
         serializer.is_valid(raise_exception=True)
-        serializer.save(client_id=request.user.id, cart_id=cart.id)
+        self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
+    # def create(self, request, *args, **kwargs):
+    #     serializer = self.get_serializer(data=request.data)
+    #     cart_id = request.data.get('cart_id')
+    #     cart = Cart.objects.filter(id=cart_id).first()
+    #     serializer.is_valid(raise_exception=True)
+    #     serializer.save(client_id=request.user.id, cart_id=cart.id)
+    #     headers = self.get_success_headers(serializer.data)
+    #     return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
-class OrderListAPI(generics.ListAPIView):
-    queryset = Order.objects.all()
-    serializer_class = OrderSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
+class QuantityUpdateAPIView(generics.RetrieveAPIView):
+    queryset = CartItem.objects.all()
 
-class OrderDestroyAPI(generics.DestroyAPIView):
-    queryset = Order.objects.all()
-    serializer_class = OrderSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    def patch(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
 
-    def destroy(self, request, *args, **kwargs):
+    def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-        self.perform_destroy(instance)
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-    def perform_destroy(self, instance):
-        instance.delete()
+        instance.quantity = request.data['quantity']
+        instance.save()
+        return Response({'success': True, 'quantity': instance.quantity})

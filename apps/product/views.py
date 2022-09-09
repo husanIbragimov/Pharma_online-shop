@@ -71,41 +71,17 @@ from ..account.permissions import IsAdminUserForAccount
 #     lookup_field = 'pk'
 
 
-class CategoryCreateAPIView(generics.CreateAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-    permission_classes = [IsAdminUserForAccount]
-
-
 class CategoryListAPIView(generics.ListAPIView):
     queryset = Category.objects.filter(is_active=True, parent_category__isnull=True).order_by('name')
     serializer_class = CategorySerializer
+    authentication_classes = (authentication.TokenAuthentication,)
 
 
 class CategoryRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    authentication_classes = (authentication.TokenAuthentication,)
     lookup_field = 'pk'
-
-
-class CategoryUpdateAPIView(generics.UpdateAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-    permission_classes = [IsAdminUserForAccount]
-    lookup_field = 'pk'
-
-
-class CategoryDestroyAPIView(generics.DestroyAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-    permission_classes = [IsAdminUserForAccount]
-    lookup_field = 'pk'
-
-
-class BrandCreateAPIView(generics.CreateAPIView):
-    queryset = Brand.objects.all()
-    serializer_class = BrandSerializer
-    permission_classes = [IsAdminUserForAccount]
 
 
 class BrandListAPIView(generics.ListAPIView):
@@ -119,20 +95,6 @@ class BrandRetrieveAPIView(generics.RetrieveAPIView):
     lookup_field = 'pk'
 
 
-class BrandUpdateAPIView(generics.UpdateAPIView):
-    queryset = Brand.objects.all()
-    serializer_class = BrandSerializer
-    permission_classes = [IsAdminUserForAccount]
-    lookup_field = 'pk'
-
-
-class BrandDestroyAPIView(generics.DestroyAPIView):
-    queryset = Brand.objects.all()
-    serializer_class = BrandSerializer
-    permission_classes = [IsAdminUserForAccount]
-    lookup_field = 'pk'
-
-
 class ProductCreateAPIView(generics.CreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
@@ -140,22 +102,24 @@ class ProductCreateAPIView(generics.CreateAPIView):
 
 
 class ProductListAPIView(generics.ListAPIView):
-    queryset = Product.objects.all()
+    queryset = Product.objects.filter(is_active=True).order_by('-id')
     serializer_class = ProductSerializer
     authentication_classes = (authentication.TokenAuthentication,)
-    filter_backends = [SearchFilter, OrderingFilter]
 
-    def get_queryset(self, *args, **kwargs):
-        queryset_list = super().get_queryset().filter()
-        query = self.request.GET.get('q')
-        if query:
-            queryset_list = queryset_list.filter(
-                Q(title_icontains=query) |
-                Q(status=query) |
-                Q(category_shop__name__iexact=query) |
-                Q(category_shop__name__icontains=query)
-            )
-        return queryset_list
+    def get_queryset(self):
+        qs = self.queryset.all()
+        param = self.request.GET.get('search')
+        cat = self.request.GET.get('category')
+
+        param_condition = Q()
+        if param:
+            param_condition = Q(name__icontains=param)
+        cat_condition = Q()
+        if cat:
+            cat_condition = Q(category__name__icontains=cat)
+
+        qs = qs.filter(param_condition, cat_condition)
+        return qs
 
 
 class ProductRetrieveAPIView(generics.RetrieveAPIView):
@@ -164,32 +128,9 @@ class ProductRetrieveAPIView(generics.RetrieveAPIView):
     lookup_field = 'pk'
 
 
-class ProductDestroyAPIView(generics.DestroyAPIView):
-    queryset = Product.objects.all()
+class NewProductListAPIView(generics.ListAPIView):
+    queryset = Product.objects.filter(is_active=True).order_by('-created_at')[:8]
     serializer_class = ProductSerializer
-    permission_classes = [IsAdminUserForAccount]
-    lookup_field = 'pk'
-
-    def destroy(self, request, *args, **kwargs):
-        instance = self.get_object()
-        self.perform_destroy(instance)
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-    def perform_destroy(self, instance):
-        instance.delete()
-
-
-class ProductUpdateAPIView(generics.UpdateAPIView):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
-    permission_classes = [IsAdminUserForAccount]
-    lookup_field = 'pk'
-
-
-class NewValueCreateAPIView(generics.CreateAPIView):
-    queryset = NewValue.objects.all()
-    serializer_class = NewValueSerializer
-    permission_classes = [IsAdminUserForAccount]
 
 
 class NewValueListAPIView(generics.ListAPIView):
@@ -202,16 +143,3 @@ class NewValueRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = NewValueSerializer
     lookup_field = 'pk'
 
-
-class NewValueUpdateAPIView(generics.UpdateAPIView):
-    queryset = NewValue.objects.all()
-    serializer_class = NewValueSerializer
-    permission_classes = [IsAdminUserForAccount]
-    lookup_field = 'pk'
-
-
-class NewValueDestroyAPIView(generics.DestroyAPIView):
-    queryset = NewValue.objects.all()
-    serializer_class = NewValueSerializer
-    permission_classes = [IsAdminUserForAccount]
-    lookup_field = 'pk'
