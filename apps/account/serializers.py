@@ -16,6 +16,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = ('id',
                   'first_name',
                   'last_name',
+                  'username',
                   'email',
                   'password',
                   'password2'
@@ -39,14 +40,29 @@ class LoginSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(max_length=101, required=True)
     password = serializers.CharField(max_length=68, write_only=True)
     token = serializers.SerializerMethodField(read_only=True)
+    first_name = serializers.CharField(max_length=100, read_only=True)
+    last_name = serializers.CharField(max_length=100, read_only=True)
+    username = serializers.CharField(max_length=100, read_only=True)
 
     def get_token(self, obj):
         user = Account.objects.filter(email=obj.get('email')).first()
         return user.token
 
+    def get_fisrt_name(self, obj):
+        user = Account.objects.filter(email=obj.get('email')).first()
+        return user.first_name
+
+    def get_last_name(self, obj):
+        user = Account.objects.filter(email=obj.get('email')).first()
+        return user.last_name
+
+    def get_username(self, obj):
+        user = Account.objects.filter(email=obj.get('email')).first()
+        return user.username
+
     class Meta:
         model = Account
-        fields = ('email', 'password', 'token')
+        fields = ('email', 'password', 'token', 'first_name', 'last_name', 'username')
 
     def validate(self, attrs):
         email = attrs.get('email')
@@ -64,7 +80,10 @@ class LoginSerializer(serializers.ModelSerializer):
         data = {
             'success': True,
             'email': user.email,
-            'tokens': user.token
+            'tokens': user.token,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'username': user.username,
         }
         return data
 
@@ -142,15 +161,15 @@ class ChangeNewPasswordSerializer(serializers.ModelSerializer):
 
 
 class AccountSerializer(serializers.ModelSerializer):
+    gender = serializers.CharField(source='get_gender_display')
+
     class Meta:
         model = Account
         fields = (
-            'id', 'email', 'first_name', 'last_name',
+            'id', 'email', 'first_name', 'last_name', 'username',
             'bio',
+            'gender',
             'image',
             'is_active',
-            'is_superuser',
-            'is_admin',
-            'is_staff',
             'date_login'
         )

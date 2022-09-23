@@ -70,15 +70,14 @@ class Product(Timestemp):
     status = models.IntegerField(choices=STATUS, default=0)
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, null=True, blank=True)
-    # description = RichTextField()
     category = models.ManyToManyField(Category, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, null=True, blank=True)
     key = models.CharField(max_length=30, null=True)
-    value = models.IntegerField()
-    new_price = models.ForeignKey(NewValue, on_delete=models.SET_NULL, null=True, blank=True)
+    value = models.FloatField()
+    sale = models.FloatField(default=0.0, null=True, blank=True)
     made_in = models.CharField(max_length=50)  # ishlab chiqarilgan joy
     release_form = models.CharField(max_length=30)  # chiqarish shakli
-    consists = RichTextField()
+    consists = models.TextField()
     capacity = models.CharField(max_length=20)  # sig'imi
     guarantee = models.CharField(max_length=30)  # muddat
     is_active = models.BooleanField(default=True)
@@ -104,3 +103,10 @@ class ProductImage(Timestemp):
 
     def __str__(self):
         return f'image of {self.product.id}'
+
+
+class Banner(Timestemp):
+    image = models.ImageField(upload_to='product/banner/')
+
+    def __str__(self):
+        return self.image.url

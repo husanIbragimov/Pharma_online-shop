@@ -87,7 +87,7 @@ class ProductSerializer(serializers.ModelSerializer):
                   'brand',
                   'key',
                   'value',
-                  'new_price',
+                  'sale',
                   'made_in',
                   'release_form',
                   'consists',
@@ -98,3 +98,10 @@ class ProductSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'slug': {'read_only': True}
         }
+
+
+class BannerSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Banner
+        fields = ['image']

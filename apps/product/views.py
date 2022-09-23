@@ -129,17 +129,13 @@ class ProductRetrieveAPIView(generics.RetrieveAPIView):
 
 
 class NewProductListAPIView(generics.ListAPIView):
-    queryset = Product.objects.filter(is_active=True).order_by('-created_at')[:8]
+    queryset = Product.objects.filter(is_active=True).order_by('-created_at')[:10]
     serializer_class = ProductSerializer
+    pagination_class = None
 
 
-class NewValueListAPIView(generics.ListAPIView):
-    queryset = NewValue.objects.all()
-    serializer_class = NewValueSerializer
-
-
-class NewValueRetrieveAPIView(generics.RetrieveAPIView):
-    queryset = NewValue.objects.all()
-    serializer_class = NewValueSerializer
-    lookup_field = 'pk'
+class BannerListAPIView(generics.ListAPIView):
+    queryset = Banner.objects.all()
+    serializer_class = BannerSerializer
+    pagination_class = None
 

@@ -1,0 +1,541 @@
+/* LOCAL FIXES */
+/* HERO 2 */
+.section-hero .twist-container .hero-twist .media-container .endframe {
+	background-image: url(/uz/iphone-13/images/overview/hero/hero_2_static__w0gvqnaqsjm2_large.jpg);
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
+	.section-hero .twist-container .hero-twist .media-container .endframe {
+		background-image: url(/uz/iphone-13/images/overview/hero/hero_2_static__w0gvqnaqsjm2_large_2x.jpg);
+	}
+}
+
+@media only screen and (min-width: 1441px) {
+	.section-hero .twist-container .hero-twist .media-container .endframe {
+		background-image: url(/uz/iphone-13/images/overview/hero/hero_2_static__w0gvqnaqsjm2_xlarge.jpg);
+	}
+}
+
+@media only screen and (min-width: 1441px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-width: 1441px) and (min-resolution: 1.5dppx), only screen and (min-width: 1441px) and (min-resolution: 144dpi) {
+	.section-hero .twist-container .hero-twist .media-container .endframe {
+		background-image: url(/uz/iphone-13/images/overview/hero/hero_2_static__w0gvqnaqsjm2_xlarge_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-hero .twist-container .hero-twist .media-container .endframe {
+		background-image: url(/uz/iphone-13/images/overview/hero/hero_2_static__w0gvqnaqsjm2_medium.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1068px) and (min-resolution: 1.5dppx), only screen and (max-width: 1068px) and (min-resolution: 144dpi) {
+	.section-hero .twist-container .hero-twist .media-container .endframe {
+		background-image: url(/uz/iphone-13/images/overview/hero/hero_2_static__w0gvqnaqsjm2_medium_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) {
+	.section-hero .twist-container .hero-twist .media-container .endframe {
+		background-image: url(/uz/iphone-13/images/overview/hero/twist_endframe__eufh5vxn7iqa_small.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 734px) and (min-resolution: 1.5dppx), only screen and (max-width: 734px) and (min-resolution: 144dpi) {
+	.section-hero .twist-container .hero-twist .media-container .endframe {
+		background-image: url(/uz/iphone-13/images/overview/hero/twist_endframe__eufh5vxn7iqa_small_2x.jpg);
+	}
+}
+
+/* LOCAL SCREENS */
+/* WATER RESISTANT - GREEN */
+@media only screen and (max-width: 734px) {
+	.section-design .bento.colortheme-green .image-device-iphone13-mini {
+		margin-bottom: 11px;
+	}
+}
+
+.section-design .bento.colortheme-green .image-bento-water {
+	width: 516px;
+	height: 91px;
+	background-size: 516px 91px;
+	background-repeat: no-repeat;
+	background-image: url(/uz/iphone-13/images/overview/design/water_resistant_green__5xephdwptpei_large.jpg);
+	margin-top: 14px;
+	position: relative;
+	z-index: 1;
+	background-color: initial;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
+	.section-design .bento.colortheme-green .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_green__5xephdwptpei_large_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-design .bento.colortheme-green .image-bento-water {
+		width: 345px;
+		height: 62px;
+		background-size: 345px 62px;
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_green__5xephdwptpei_medium.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1068px) and (min-resolution: 1.5dppx), only screen and (max-width: 1068px) and (min-resolution: 144dpi) {
+	.section-design .bento.colortheme-green .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_green__5xephdwptpei_medium_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) {
+	.section-design .bento.colortheme-green .image-bento-water {
+		width: 206px;
+		height: 106px;
+		background-size: 206px 106px;
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_green__5xephdwptpei_small.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 734px) and (min-resolution: 1.5dppx), only screen and (max-width: 734px) and (min-resolution: 144dpi) {
+	.section-design .bento.colortheme-green .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_green__5xephdwptpei_small_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-design .bento.colortheme-green .image-bento-water {
+		margin-top: 12px;
+	}
+}
+
+/* WATER RESISTANT - PINK */
+@media only screen and (max-width: 734px) {
+	.section-design .bento.colortheme-pink .image-device-iphone13-mini {
+		margin-bottom: 11px;
+	}
+}
+
+.section-design .bento.colortheme-pink .image-bento-water {
+	width: 516px;
+	height: 91px;
+	background-size: 516px 91px;
+	background-repeat: no-repeat;
+	background-image: url(/uz/iphone-13/images/overview/design/water_resistant_pink__bji03pcves5e_large.jpg);
+	margin-top: 14px;
+	position: relative;
+	z-index: 1;
+	background-color: initial;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
+	.section-design .bento.colortheme-pink .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_pink__bji03pcves5e_large_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-design .bento.colortheme-pink .image-bento-water {
+		width: 345px;
+		height: 62px;
+		background-size: 345px 62px;
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_pink__bji03pcves5e_medium.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1068px) and (min-resolution: 1.5dppx), only screen and (max-width: 1068px) and (min-resolution: 144dpi) {
+	.section-design .bento.colortheme-pink .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_pink__bji03pcves5e_medium_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) {
+	.section-design .bento.colortheme-pink .image-bento-water {
+		width: 206px;
+		height: 106px;
+		background-size: 206px 106px;
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_pink__bji03pcves5e_small.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 734px) and (min-resolution: 1.5dppx), only screen and (max-width: 734px) and (min-resolution: 144dpi) {
+	.section-design .bento.colortheme-pink .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_pink__bji03pcves5e_small_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-design .bento.colortheme-pink .image-bento-water {
+		margin-top: 12px;
+	}
+}
+
+/* WATER RESISTANT - BLUE */
+@media only screen and (max-width: 734px) {
+	.section-design .bento.colortheme-blue .image-device-iphone13-mini {
+		margin-bottom: 11px;
+	}
+}
+
+.section-design .bento.colortheme-blue .image-bento-water {
+	width: 516px;
+	height: 91px;
+	background-size: 516px 91px;
+	background-repeat: no-repeat;
+	background-image: url(/uz/iphone-13/images/overview/design/water_resistant_blue__c0j14e4usxsi_large.jpg);
+	margin-top: 14px;
+	position: relative;
+	z-index: 1;
+	background-color: initial;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
+	.section-design .bento.colortheme-blue .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_blue__c0j14e4usxsi_large_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-design .bento.colortheme-blue .image-bento-water {
+		width: 345px;
+		height: 62px;
+		background-size: 345px 62px;
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_blue__c0j14e4usxsi_medium.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1068px) and (min-resolution: 1.5dppx), only screen and (max-width: 1068px) and (min-resolution: 144dpi) {
+	.section-design .bento.colortheme-blue .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_blue__c0j14e4usxsi_medium_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) {
+	.section-design .bento.colortheme-blue .image-bento-water {
+		width: 206px;
+		height: 106px;
+		background-size: 206px 106px;
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_blue__c0j14e4usxsi_small.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 734px) and (min-resolution: 1.5dppx), only screen and (max-width: 734px) and (min-resolution: 144dpi) {
+	.section-design .bento.colortheme-blue .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_blue__c0j14e4usxsi_small_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-design .bento.colortheme-blue .image-bento-water {
+		margin-top: 12px;
+	}
+}
+
+/* WATER RESISTANT - MIDNIGHT */
+@media only screen and (max-width: 734px) {
+	.section-design .bento.colortheme-midnight .image-device-iphone13-mini {
+		margin-bottom: 11px;
+	}
+}
+
+.section-design .bento.colortheme-midnight .image-bento-water {
+	width: 516px;
+	height: 91px;
+	background-size: 516px 91px;
+	background-repeat: no-repeat;
+	background-image: url(/uz/iphone-13/images/overview/design/water_resistant_midnight__cz38pgnhst26_large.jpg);
+	margin-top: 14px;
+	position: relative;
+	z-index: 1;
+	background-color: initial;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
+	.section-design .bento.colortheme-midnight .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_midnight__cz38pgnhst26_large_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-design .bento.colortheme-midnight .image-bento-water {
+		width: 345px;
+		height: 62px;
+		background-size: 345px 62px;
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_midnight__cz38pgnhst26_medium.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1068px) and (min-resolution: 1.5dppx), only screen and (max-width: 1068px) and (min-resolution: 144dpi) {
+	.section-design .bento.colortheme-midnight .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_midnight__cz38pgnhst26_medium_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) {
+	.section-design .bento.colortheme-midnight .image-bento-water {
+		width: 206px;
+		height: 106px;
+		background-size: 206px 106px;
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_midnight__cz38pgnhst26_small.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 734px) and (min-resolution: 1.5dppx), only screen and (max-width: 734px) and (min-resolution: 144dpi) {
+	.section-design .bento.colortheme-midnight .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_midnight__cz38pgnhst26_small_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-design .bento.colortheme-midnight .image-bento-water {
+		margin-top: 12px;
+	}
+}
+
+/* WATER RESISTANT - STARLIGHT */
+@media only screen and (max-width: 734px) {
+	.section-design .bento.colortheme-starlight .image-device-iphone13-mini {
+		margin-bottom: 11px;
+	}
+}
+
+.section-design .bento.colortheme-starlight .image-bento-water {
+	width: 516px;
+	height: 91px;
+	background-size: 516px 91px;
+	background-repeat: no-repeat;
+	background-image: url(/uz/iphone-13/images/overview/design/water_resistant_starlight__cb8pejfi5bma_large.jpg);
+	margin-top: 14px;
+	position: relative;
+	z-index: 1;
+	background-color: initial;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
+	.section-design .bento.colortheme-starlight .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_starlight__cb8pejfi5bma_large_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-design .bento.colortheme-starlight .image-bento-water {
+		width: 345px;
+		height: 62px;
+		background-size: 345px 62px;
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_starlight__cb8pejfi5bma_medium.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1068px) and (min-resolution: 1.5dppx), only screen and (max-width: 1068px) and (min-resolution: 144dpi) {
+	.section-design .bento.colortheme-starlight .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_starlight__cb8pejfi5bma_medium_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) {
+	.section-design .bento.colortheme-starlight .image-bento-water {
+		width: 206px;
+		height: 106px;
+		background-size: 206px 106px;
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_starlight__cb8pejfi5bma_small.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 734px) and (min-resolution: 1.5dppx), only screen and (max-width: 734px) and (min-resolution: 144dpi) {
+	.section-design .bento.colortheme-starlight .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_starlight__cb8pejfi5bma_small_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-design .bento.colortheme-starlight .image-bento-water {
+		margin-top: 12px;
+	}
+}
+
+/* WATER RESISTANT - RED */
+@media only screen and (max-width: 734px) {
+	.section-design .bento.colortheme-red .image-device-iphone13-mini {
+		margin-bottom: 11px;
+	}
+}
+
+.section-design .bento.colortheme-red .image-bento-water {
+	width: 516px;
+	height: 91px;
+	background-size: 516px 91px;
+	background-repeat: no-repeat;
+	background-image: url(/uz/iphone-13/images/overview/design/water_resistant_red__be2yibg6u4ky_large.jpg);
+	margin-top: 14px;
+	position: relative;
+	z-index: 1;
+	background-color: initial;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
+	.section-design .bento.colortheme-red .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_red__be2yibg6u4ky_large_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-design .bento.colortheme-red .image-bento-water {
+		width: 345px;
+		height: 62px;
+		background-size: 345px 62px;
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_red__be2yibg6u4ky_medium.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1068px) and (min-resolution: 1.5dppx), only screen and (max-width: 1068px) and (min-resolution: 144dpi) {
+	.section-design .bento.colortheme-red .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_red__be2yibg6u4ky_medium_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) {
+	.section-design .bento.colortheme-red .image-bento-water {
+		width: 206px;
+		height: 106px;
+		background-size: 206px 106px;
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_red__be2yibg6u4ky_small.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 734px) and (min-resolution: 1.5dppx), only screen and (max-width: 734px) and (min-resolution: 144dpi) {
+	.section-design .bento.colortheme-red .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_red__be2yibg6u4ky_small_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-design .bento.colortheme-red .image-bento-water {
+		margin-top: 12px;
+	}
+}
+
+/* WATER RESISTANT - STATIC */
+.section-design .gallery-item-static .image-bento-water {
+	width: 516px;
+	height: 91px;
+	background-size: 516px 91px;
+	background-repeat: no-repeat;
+	background-image: url(/uz/iphone-13/images/overview/design/water_resistant_starlight__cb8pejfi5bma_large.jpg);
+	margin-top: 14px;
+	position: relative;
+	z-index: 1;
+	background-color: initial;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
+	.section-design .gallery-item-static .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_starlight__cb8pejfi5bma_large_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-design .gallery-item-static .image-bento-water {
+		width: 345px;
+		height: 62px;
+		background-size: 345px 62px;
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_starlight__cb8pejfi5bma_medium.jpg);
+	}
+}
+
+@media only screen and (max-width: 1068px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1068px) and (min-resolution: 1.5dppx), only screen and (max-width: 1068px) and (min-resolution: 144dpi) {
+	.section-design .gallery-item-static .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_starlight__cb8pejfi5bma_medium_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) {
+	.section-design .gallery-item-static .image-bento-water {
+		width: 206px;
+		height: 106px;
+		background-size: 206px 106px;
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_starlight__cb8pejfi5bma_small.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 734px) and (min-resolution: 1.5dppx), only screen and (max-width: 734px) and (min-resolution: 144dpi) {
+	.section-design .gallery-item-static .image-bento-water {
+		background-image: url(/uz/iphone-13/images/overview/design/water_resistant_starlight__cb8pejfi5bma_small_2x.jpg);
+	}
+}
+
+/* HERO */
+html.enhance-page-xp-media.enhance-hero-video .section-hero .hero-intro-video .endframe {
+	background-repeat: no-repeat;
+	background-image: url(/uz/iphone-13/images/overview/hero/hero_endframe__drwl8v63jyqa_large.jpg);
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
+	html.enhance-page-xp-media.enhance-hero-video .section-hero .hero-intro-video .endframe {
+		background-image: url(/uz/iphone-13/images/overview/hero/hero_endframe__drwl8v63jyqa_large_2x.jpg);
+	}
+}
+
+@media only screen and (min-width: 735px) and (max-width: 1068px) and (min-height: 851px) {
+	html.enhance-page-xp-media.enhance-hero-video .section-hero .hero-intro-video .endframe {
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/hero/hero_endframe_medium__dltxsq4o0oya_tall.jpg);
+	}
+}
+
+@media only screen and (min-width: 735px) and (max-width: 1068px) and (min-height: 851px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-width: 735px) and (max-width: 1068px) and (min-height: 851px) and (min-resolution: 1.5dppx), only screen and (min-width: 735px) and (max-width: 1068px) and (min-height: 851px) and (min-resolution: 144dpi) {
+	html.enhance-page-xp-media.enhance-hero-video .section-hero .hero-intro-video .endframe {
+		background-image: url(/uz/iphone-13/images/overview/hero/hero_endframe_medium__dltxsq4o0oya_tall_2x.jpg);
+	}
+}
+
+@media only screen and (min-width: 735px) and (max-width: 1068px) and (max-height: 850px) {
+	html.enhance-page-xp-media.enhance-hero-video .section-hero .hero-intro-video .endframe {
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/hero/hero_endframe__drwl8v63jyqa_medium.jpg);
+	}
+}
+
+@media only screen and (min-width: 735px) and (max-width: 1068px) and (max-height: 850px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-width: 735px) and (max-width: 1068px) and (max-height: 850px) and (min-resolution: 1.5dppx), only screen and (min-width: 735px) and (max-width: 1068px) and (max-height: 850px) and (min-resolution: 144dpi) {
+	html.enhance-page-xp-media.enhance-hero-video .section-hero .hero-intro-video .endframe {
+		background-image: url(/uz/iphone-13/images/overview/hero/hero_endframe__drwl8v63jyqa_medium_2x.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) {
+	html.enhance-page-xp-media.enhance-hero-video .section-hero .hero-intro-video .endframe {
+		background-repeat: no-repeat;
+		background-image: url(/uz/iphone-13/images/overview/hero/hero_endframe__drwl8v63jyqa_small.jpg);
+	}
+}
+
+@media only screen and (max-width: 734px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 734px) and (min-resolution: 1.5dppx), only screen and (max-width: 734px) and (min-resolution: 144dpi) {
+	html.enhance-page-xp-media.enhance-hero-video .section-hero .hero-intro-video .endframe {
+		background-image: url(/uz/iphone-13/images/overview/hero/hero_endframe__drwl8v63jyqa_small_2x.jpg);
+	}
+}
+
+/* Section Continuity */
+.section-continuity .image-continuity {
+	--p-width: 879px;
+	margin-left: 18px;
+}
+
+@media only screen and (max-width: 1068px) {
+	.section-continuity .image-continuity {
+		--p-width: 627px;
+		margin-left: 15px;
+	}
+}

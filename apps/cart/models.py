@@ -1,54 +1,28 @@
 import uuid
-from django.conf import settings
 from django.db import models
-from django.db.models.signals import post_save
 
 from apps.account.models import Account
 from apps.product.models import Product
 
 
-class WishList(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f'wishlist of {self.user.email} (id: {self.id})'
-
-
-class Cart(models.Model):
-    client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    is_ordered = models.BooleanField(default=False)
-
-    # @property
-    # def get_cart_items(self):
-    #     cart_items = self.get_cart_items.all()
-    #     total = sum([item.quantity for item in cart_items])
-    #     return total
-    #
-    # @property
-    # def get_cart_total(self):
-    #     cart_items = self.get_cart_items.all()
-    #     total = sum([item.get_total for item in cart_items])
-    #     return total
-
-    def __str__(self):
-        return f'order of {self.client} | (id: {self.id})'
-
-
 class CartItem(models.Model):
-    # cart = models.ForeignKey(Cart, on_delete=models.SET_NULL, null=True, related_name='cart_items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
     quantity = models.IntegerField(default=1)
     summa = models.FloatField(default=0.0)
 
     @property
     def get_total(self):
+        if self.product.sale > 0:
+            self.summa = self.quantity * self.product.sale
+            self.save()
+            return self.summa
         self.summa = self.quantity * self.product.value
         self.save()
         return self.summa
 
-    def __str__(self):
-        return self.product.name
+    # def __str__(self):
+    #     return self.product
+
 
 
 class Order(models.Model):

@@ -1,14 +1,15 @@
 from django.contrib import admin
-from .models import *
+from .models import CartItem, Order
 
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'client', 'quantity', 'phone', 'status',)
-    readonly_fields = ('created_at',)
+    readonly_fields = ('cart_items', 'created_at',)
 
 
-# admin.site.register(Cart)
-admin.site.register(CartItem)
-admin.site.register(WishList)
+class CartAdmin(admin.ModelAdmin):
+    list_display = ('id', 'product')
+
+
+admin.site.register(CartItem, CartAdmin)
 admin.site.register(Order, OrderAdmin)
-

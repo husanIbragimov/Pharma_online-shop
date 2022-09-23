@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-pylw3j93+p^$%)!9t7+sn&)9e4*@5-w@wrweo4f_+6$$crcyzm'
 
-STRIPE_SECRET_KEY = 'pk_test_51LfgPFKFGJ64tNUzzfHpaAGH0HKoPxzNFAB00mXNEITldtmTilcZAPEqPvj0h8lVYOLYByXCwhZPJlfBwWbn6mmA00KuccuP6t'
+# STRIPE_SECRET_KEY = 'pk_test_51LfgPFKFGJ64tNUzzfHpaAGH0HKoPxzNFAB00mXNEITldtmTilcZAPEqPvj0h8lVYOLYByXCwhZPJlfBwWbn6mmA00KuccuP6t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -238,7 +238,7 @@ EMAIL_PORT = 587
 # EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 # EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_HOST_USER = 'ibragmovhusan283@gmail.com'
-EMAIL_HOST_PASSWORD = 'zonjqsrbpoctogcy'
+EMAIL_HOST_PASSWORD = 'semuedtzmixqzjvd'
 
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {

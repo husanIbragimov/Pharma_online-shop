@@ -31,8 +31,6 @@ class ProductAdmin(TranslationAdmin):
 
 admin.site.register(Brand)
 admin.site.register(NewValue)
-# admin.site.register(TypeCategory)
-# admin.site.register(SubCategory)
-admin.site.register(Category_status)
+admin.site.register(Banner)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)

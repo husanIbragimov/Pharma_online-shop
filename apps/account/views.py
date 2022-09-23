@@ -6,8 +6,8 @@ from .serializers import RegisterSerializer, EmailVerificationSerializer, LoginS
     SetNewPasswordSerializer, ChangeNewPasswordSerializer, AccountSerializer
 from rest_framework import generics, views, permissions, status
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
-from .permissions import IsOwnerOrReadOnlyForAccount, IsAdminUserForAccount
+from rest_framework.permissions import AllowAny
+from .permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.conf import settings
@@ -157,5 +157,5 @@ class MyAccountAPIView(generics.RetrieveUpdateAPIView):
     # http://127.0.0.1:8000/account/login/{email}/
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
-    permission_classes = (IsAuthenticated, IsOwnerOrReadOnlyForAccount)
-    lookup_field = 'email'
+    permission_classes = (IsAuthenticated,)
+    lookup_field = 'username'

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from rest_framework.reverse import reverse
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
@@ -24,10 +25,20 @@ class AccountManager(BaseUserManager):
         return user
 
 
+GENDER = (
+    (0, 'None'),
+    (1, 'Male'),
+    (2, 'female'),
+)
+
+
 class Account(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, db_index=True)
+    username = models.CharField(max_length=100, unique=True, db_index=True)
+    slug = models.SlugField(unique=True, null=True, blank=True)
     first_name = models.CharField(max_length=100, null=True)
     last_name = models.CharField(max_length=100, null=True)
+    gender = models.IntegerField(choices=GENDER, default=0)
     image = models.ImageField(null=True, blank=True, upload_to='profile/')
     bio = models.TextField(null=True, blank=True)
     is_superuser = models.BooleanField(default=False, verbose_name='Super user')
@@ -41,6 +52,9 @@ class Account(AbstractBaseUser, PermissionsMixin):
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
+    def get_absolute_url(self):
+        return reverse("account_detail", kwargs={"slug": self.slug})
 
     def __str__(self):
         if self.first_name:
