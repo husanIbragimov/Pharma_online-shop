@@ -4,7 +4,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 from .serializers import RegisterSerializer, EmailVerificationSerializer, LoginSerializer, ResetPasswordSerializer, \
     SetNewPasswordSerializer, ChangeNewPasswordSerializer, AccountSerializer
-from rest_framework import generics, views, permissions, status
+from rest_framework import generics, views, status
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
 from .permissions import IsAuthenticated

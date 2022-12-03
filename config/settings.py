@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os.path
 from datetime import timedelta
 from pathlib import Path
-import django_heroku
+# import django_heroku
 from django.utils.translation import gettext_lazy as _
 
 # Activate Django-heroku.
@@ -162,6 +162,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
+# Default language
 LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Asia/Tashkent'
@@ -174,11 +175,12 @@ USE_TZ = True
 
 # Translater
 
-LANGUAGES = (
-    ('en', _('English')),
-    ('ru', _('Russian')),
-    ('uz', _('Uzbek')),
-)
+# Languages supported by translation
+LANGUAGES = [
+    ('en', 'English'),
+    ('ru', 'Russian'),
+    ('uz', 'Uzbek'),
+]
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale/',
@@ -189,12 +191,18 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 MODELTRANSLATION_LANGUAGE = ('en', 'ru', 'uz')
 
 MODELTRANSLATION_TRANSLATION_FILES = (
-    'apps.account.translator',
+    # 'apps.account.translator',
     'apps.blog.translator',
-    'apps.cart.translator',
+    # 'apps.cart.translator',
     'apps.contact.translator',
     'apps.product.translator',
 )
+
+TRANSLATABLE_MODEL_MODULES = [
+    'apps.blog.models',
+    'apps.contact.models',
+    'apps.product.models',
+]
 
 PARLER_LANGUAGES = {
     None: (
@@ -220,6 +228,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
+
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
